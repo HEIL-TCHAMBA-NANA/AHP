@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AHP Decision Maker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="container">
+  <h1>🎯 AHP — Aide à la Décision</h1>
+
+  <!-- ÉTAPE 1 -->
+  <section id="step1">
+    <h2>Étape 1 — Critères & Alternatives</h2>
+    <div class="row">
+      <div>
+        <label>Critères (séparés par virgule)</label>
+        <input type="text" id="criteriaInput" placeholder="ex: Price, Storage, RAM"/>
+      </div>
+      <div>
+        <label>Alternatives (séparées par virgule)</label>
+        <input type="text" id="alternativesInput" placeholder="ex: ASUS, DELL, LENOVO"/>
+      </div>
+    </div>
+    <button onclick="generateStep2()">Suivant →</button>
+  </section>
+
+  <!-- ÉTAPE 2 : Scores réels -->
+  <section id="step2" class="hidden">
+    <h2>Étape 2 — Scores des alternatives par critère</h2>
+    <p class="hint">
+      Entrez la valeur réelle de chaque alternative pour chaque critère.
+      Cochez "Plus petit = meilleur" pour les critères comme le Prix.
+    </p>
+    <div id="scoresTable"></div>
+    <button onclick="generateStep3()">Suivant →</button>
+  </section>
+
+  <!-- ÉTAPE 3 : Matrice critères -->
+  <section id="step3" class="hidden">
+    <h2>Étape 3 — Matrice de comparaison des critères</h2>
+    <p class="hint">
+      Échelle : 1=égal, 3=modéré, 5=fort, 7=très fort, 9=extrême<br/>
+      Inverses : 1/3, 1/5, 1/7, 1/9
+    </p>
+    <div id="criteriaMatrix"></div>
+    <button class="btn-compute" onclick="computeAHP()">⚙️ Calculer AHP</button>
+  </section>
+
+  <!-- RÉSULTATS -->
+  <section id="results" class="hidden">
+    <h2>Résultats</h2>
+    <div id="resultsContent"></div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
